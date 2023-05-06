@@ -1,0 +1,118 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Todo List API - v1",
+    "description": "API Docs for the Todo List Application.",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+    "/api/todos/add": {
+      "post": {
+        "tags": ["Todo List CRUD"],
+        "description": "Add a Todo",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string",
+                    "description": "Todo content",
+                    "example": "First todo"
+                  }
+                },
+                "required": ["content"]
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/api/todos/getAllTodos": {
+      "get": {
+        "tags": ["Todo List CRUD"],
+        "description": "",
+        "responses": {}
+      }
+    },
+    "/api/todos/update/{id}": {
+      "put": {
+        "tags": ["Todo List CRUD"],
+        "description": "Update a Todo.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of todo that needs to be updated",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string",
+                    "description": "Todo content",
+                    "example": "Updated todo"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/api/todos/delete/{id}": {
+      "delete": {
+        "tags": ["Todo List CRUD"],
+        "description": "Delete a Todo.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of todo that needs to be deleted",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/todos/toggleCompleted/{id}": {
+      "patch": {
+        "tags": ["Todo List CRUD"],
+        "description": "Toggle the completed state of a Todo.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of todo that needs to be deleted",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    }
+  }
+}
